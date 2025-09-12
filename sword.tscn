@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2wl5cg3o02bs"]
+
+[ext_resource type="Script" uid="uid://buoa3e1vdcxoo" path="res://sword_script.gd" id="1_74bdg"]
+[ext_resource type="Texture2D" uid="uid://brspxbp8eo553" path="res://sword_images/eldenringsword.png" id="2_e4ynd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r76a6"]
+absorbent = true
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_74bdg"]
+
+[node name="sword" type="Node2D"]
+script = ExtResource("1_74bdg")
+accel = 1.0
+speed = 1.0
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_r76a6")
+gravity_scale = 0.0
+center_of_mass_mode = 1
+inertia = 10.0
+freeze_mode = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="RigidBody2D"]
+offset_left = -96.0
+offset_top = 86.7645
+offset_right = 104.0
+offset_bottom = 286.764
+rotation = -0.754184
+scale = Vector2(0.69202, 0.69202)
+texture = ExtResource("2_e4ynd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, 86.7645)
+scale = Vector2(2.42886, -6.62352)
+shape = SubResource("CapsuleShape2D_74bdg")

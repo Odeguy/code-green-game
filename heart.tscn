@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwnng1jw2onhi"]
+
+[ext_resource type="Script" uid="uid://dxebxkusc755q" path="res://heart_script.gd" id="1_7p8dj"]
+[ext_resource type="Texture2D" uid="uid://bd8c4yhk8ceww" path="res://1200px-Heart_coraz-C3-B3n.svg_png.png" id="1_cixvg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7p8dj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pembh"]
+
+[node name="heart" type="Node2D"]
+script = ExtResource("1_7p8dj")
+health = 100
+
+[node name="HeartBody" type="StaticBody2D" parent="."]
+z_index = -1
+collision_layer = 2
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_7p8dj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeartBody"]
+position = Vector2(0, -3)
+scale = Vector2(2.54975, 1.72291)
+shape = SubResource("CircleShape2D_pembh")
+
+[node name="TextureRect" type="TextureRect" parent="HeartBody"]
+offset_left = -19.0
+offset_top = -20.0
+offset_right = 21.0
+offset_bottom = 20.0
+texture = ExtResource("1_cixvg")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://deshaiwhr6rin"]
+
+[ext_resource type="Script" uid="uid://bccg84cf1pcjm" path="res://game.gd" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://d1c8xtf4bro73" path="res://main_menu.tscn" id="2_e2o6t"]
+
+[sub_resource type="Environment" id="Environment_e2o6t"]
+glow_enabled = true
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_80nbo")
+main_menu_scene = ExtResource("2_e2o6t")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e2o6t")
