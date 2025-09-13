@@ -22,3 +22,15 @@ func set_params(radi: int, col: Color, fast: int) -> void:
 	radius = radi
 	color = col
 	speed = fast
+
+
+
+func _on_rigid_body_2d_body_entered(body: Node) -> void:
+	var opp = body.get_parent()
+	if opp is Sword:
+		$RigidBody2D/CollisionShape2D.disabled = true
+		while self.modulate.a > 0:
+			self.modulate.a -= 0.02
+			await get_tree().process_frame
+		self.queue_free()
+	

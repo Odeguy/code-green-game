@@ -18,10 +18,8 @@ mass = 50.0
 physics_material_override = SubResource("PhysicsMaterial_r76a6")
 gravity_scale = 0.0
 center_of_mass_mode = 1
-inertia = 10.0
 freeze_mode = 1
 linear_damp_mode = 1
-angular_damp_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="RigidBody2D"]
 offset_left = -96.0

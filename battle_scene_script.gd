@@ -9,6 +9,7 @@ var main_menu: Main_Menu
 @onready var screen_size: Vector2 = get_viewport_rect().size
 @onready var escalation: int = 1
 @onready var counter: int = 0
+@export var health: int = 100
 
 func _ready() -> void:
 	var sword: Sword = sword_scene.instantiate()
@@ -45,7 +46,7 @@ func spawn_flyer() -> void:
 	
 	var radius: int = (randi() % 15) + 15
 	var color: Color = Color(randf(), randf(), randf())
-	var speed: int = (randi() % 5) * escalation
+	var speed: int = (randi() % 3) * escalation + 1
 	flyer.set_params(radius, color, speed)
 	
 	add_child(flyer)

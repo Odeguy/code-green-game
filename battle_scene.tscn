@@ -1,12 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5v0qjeml41ny"]
+[gd_scene load_steps=9 format=3 uid="uid://c5v0qjeml41ny"]
 
 [ext_resource type="Script" uid="uid://rcofyp6ua674" path="res://battle_scene_script.gd" id="1_fw8re"]
 [ext_resource type="PackedScene" uid="uid://c2wl5cg3o02bs" path="res://sword.tscn" id="2_r5l0u"]
 [ext_resource type="PackedScene" uid="uid://dq30wji3p06g6" path="res://flyer.tscn" id="3_5g7vw"]
 [ext_resource type="PackedScene" uid="uid://dwnng1jw2onhi" path="res://heart.tscn" id="4_5joda"]
+[ext_resource type="Shader" uid="uid://duceo5t6wo4qi" path="res://circle_shader.gdshader" id="5_gf131"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5joda"]
+bg_color = Color(0.287359, 0.346485, 0.357025, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sl17i"]
+shader = ExtResource("5_gf131")
+shader_parameter/circle_color = Color(1, 1, 1, 1)
+shader_parameter/circle_multiplier = 10.0
+shader_parameter/speed = 1.0
+shader_parameter/direction = Vector2(1, 1)
+shader_parameter/rotation = Transform2D(1, -1, 1, 1, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5h4l"]
 
 [node name="battle_scene" type="Node2D"]
 script = ExtResource("1_fw8re")
 sword_scene = ExtResource("2_r5l0u")
 flyer_scene = ExtResource("3_5g7vw")
 heart_scene = ExtResource("4_5joda")
+
+[node name="Background" type="Panel" parent="."]
+z_index = -1
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5joda")
+
+[node name="HealthMeterBack" type="Panel" parent="."]
+offset_left = 480.0
+offset_top = 8.0
+offset_right = 672.0
+offset_bottom = 48.0
+
+[node name="HealthMater" type="HSplitContainer" parent="HealthMeterBack"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="HealthMeterBack/HealthMater"]
+material = SubResource("ShaderMaterial_sl17i")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x5h4l")

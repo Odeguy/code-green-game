@@ -18,9 +18,12 @@ corner_radius_bottom_left = 9999
 script = ExtResource("1_2lwsp")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+disable_mode = 1
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_2lwsp")
 gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_2lwsp")
@@ -34,3 +37,5 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mx0c2")
+
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
